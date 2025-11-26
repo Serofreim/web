@@ -5,5 +5,9 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  return <div className="text-center"></div>
+  return (
+    <div className="w-full h-screen bg-linear-to-b from-background to-muted text-center">
+      home
+    </div>
+  )
 }
