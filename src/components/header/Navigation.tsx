@@ -13,6 +13,7 @@ import { Badge } from '../ui/badge'
 const menus = [
   {
     title: 'Analytics',
+    badge: 'version 1.0',
     feature: {
       title: 'Serofreim Analytics',
       href: '/analytics',
@@ -21,25 +22,25 @@ const menus = [
     links: [
       {
         title: 'Getting Started',
-        href: '/analytics/docs/getting-started',
+        href: '/docs/analytics/getting-started',
         description:
           'How to get your game api key and install the analytics sdk.',
       },
       {
         title: 'Custom Tracking',
-        href: '/analytics/docs/custom-tracking',
+        href: '/docs/analytics/custom-tracking',
         description: 'How to track custom events in your visual novel.',
       },
       {
         title: 'Dashboard',
-        href: '/analytics/dashboard',
+        href: '/dashboard/analytics',
         description: 'View your game analytics and metrics in our dashboard.',
       },
     ],
   },
   {
     title: 'Systems',
-    badge: 'Soon',
+    badge: 'Coming Soon',
     feature: {
       title: 'Serofreim Systems',
       href: '/systems',
@@ -76,21 +77,24 @@ export default function Navigation() {
           </NavigationMenuLink>
         </NavigationMenuItem>
         {menus.map((menu) => (
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className={menu.badge && 'pr-14'}>
-              {menu.title}
-            </NavigationMenuTrigger>
-            {menu.badge && (
-              <Badge className="absolute top-1 right-1">{menu.badge}</Badge>
-            )}
+          <NavigationMenuItem key={menu.title}>
+            <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
+                      className="relative from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
                       href={menu.feature.href}
                     >
+                      {menu.badge && (
+                        <Badge
+                          variant="secondary"
+                          className="absolute top-2 right-2"
+                        >
+                          {menu.badge}
+                        </Badge>
+                      )}
                       <div className="mb-2 text-lg font-medium sm:mt-4">
                         {menu.feature.title}
                       </div>
@@ -101,11 +105,13 @@ export default function Navigation() {
                   </NavigationMenuLink>
                 </li>
                 {menu.links.map((link) => (
-                  <li key={link.href}>
-                    <ListItem href={link.href} title={link.title}>
-                      {link.description}
-                    </ListItem>
-                  </li>
+                  <ListItem
+                    key={link.title}
+                    href={link.href}
+                    title={link.title}
+                  >
+                    {link.description}
+                  </ListItem>
                 ))}
               </ul>
             </NavigationMenuContent>
