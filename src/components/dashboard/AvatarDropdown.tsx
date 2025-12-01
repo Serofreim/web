@@ -35,8 +35,8 @@ export default function AvatarDropdown(props: AvatarDropdownProps) {
           <DropdownMenuItem>Settings</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={props.logout} className="text-red-600">
-          Log out
+        <DropdownMenuItem onClick={props.logout} variant="destructive">
+          Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

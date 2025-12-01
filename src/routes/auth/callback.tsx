@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { AlertCircleIcon, LoaderCircle } from 'lucide-react'
+import { WarningCircleIcon, SpinnerGapIcon } from '@phosphor-icons/react'
 import { useAuthStore } from '@/stores/authStore'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
@@ -30,10 +30,10 @@ function CallbackComponent() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4">
       <div className="text-lg">Signing you in</div>
-      {!error ? <LoaderCircle className="animate-spin" /> : null}
+      {!error ? <SpinnerGapIcon className="animate-spin" /> : null}
       {error && (
         <Alert variant="destructive">
-          <AlertCircleIcon />
+          <WarningCircleIcon />
           <AlertTitle className="text-left">Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>

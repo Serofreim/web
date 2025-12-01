@@ -84,7 +84,7 @@ export default function Navigation() {
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="relative from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
+                      className="relative from-muted to-primary/30 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-bl p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
                       href={menu.feature.href}
                     >
                       {menu.badge && (
@@ -98,7 +98,7 @@ export default function Navigation() {
                       <div className="mb-2 text-lg font-medium sm:mt-4">
                         {menu.feature.title}
                       </div>
-                      <p className="text-muted-foreground text-sm leading-tight">
+                      <p className="text-sm leading-tight">
                         {menu.feature.description}
                       </p>
                     </a>
@@ -142,10 +142,10 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link to={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p>
+          <div className="flex flex-col">
+            <p className="text-sm font-medium">{title}</p>
+            <p className="line-clamp-2 text-sm leading-snug">{children}</p>
+          </div>
         </Link>
       </NavigationMenuLink>
     </li>

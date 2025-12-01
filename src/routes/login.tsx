@@ -1,6 +1,6 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { useState } from 'react'
-import { AlertCircleIcon } from 'lucide-react'
+import { WarningCircleIcon, SpinnerGapIcon } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { supabase } from '@/lib/supabase'
@@ -103,12 +103,16 @@ function RouteComponent() {
               onClick={handleLogin}
               disabled={loading}
             >
-              {loading ? 'Sending...' : 'Continue'}
+              {loading ? (
+                <SpinnerGapIcon className="animate-spin" />
+              ) : (
+                'Continue'
+              )}
             </Button>
           </div>
           {error && (
             <Alert variant="destructive">
-              <AlertCircleIcon />
+              <WarningCircleIcon />
               <AlertTitle className="text-left">{error}</AlertTitle>
             </Alert>
           )}
